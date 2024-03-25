@@ -6,6 +6,9 @@ const giveWeekDays = require("./giveWeekDays.js");
 const monthToInt = require("./monthToInt.js");
 const projects = require("./projects.js");
 const customer = require("./customer.js");
+const shifts_ = require("./shifts_sapi.js");
+const emp_details = require("./emp_dr.js");
+
 app.use(cors());
 app.use(express.json());
 
@@ -33,7 +36,12 @@ app.get("/projects", (req, res) => {
 app.get("/customer", (req, res) => {
   res.status(200).json(customer);
 });
-
+app.get("/shifts", (req, res) => {
+  res.status(200).json(shifts_);
+});
+app.get("/getemp/detail", (req, res) => {
+  res.status(200).json(emp_details);
+});
 app.get("*", (req, res) => {
   res.status(404).send("This is not a valid path!!!");
 });
